@@ -7,6 +7,7 @@ import socket
 from ndscheduler import constants
 from ndscheduler import utils
 from ndscheduler.core import scheduler_manager
+from ndscheduler import url_request
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +41,7 @@ class JobBase:
 
     @classmethod
     def get_failed_description(cls):
+        url_request.callurl()
         return utils.get_stacktrace()
 
     @classmethod
