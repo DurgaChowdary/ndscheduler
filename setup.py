@@ -66,7 +66,7 @@ setup(
     author='Nextdoor Engineering',
     author_email='eng@nextdoor.com',
     url='https://github.com/DurgaChowdary/ndscheduler',
-    download_url='http://pypi.python.org/pypi/ndscheduler#downloads',
+    download_url='http://dfi-pypi.cisco.com:8080/simple/ndscheduler1/#downloads',
     license='Apache License, Version 2',
     keywords='scheduler nextdoor cron python',
     packages=find_packages(),

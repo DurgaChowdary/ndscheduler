@@ -9,9 +9,10 @@ RUN apt-get -qq update && \
 
 RUN virtualenv /mnt/scheduler && \
     . /mnt/scheduler/bin/activate && \
-    pip install -e git+https://github.com/DurgaChowdary/ndscheduler.git#egg=ndscheduler && \
+    pip install -e git+https://github.com/DurgaChowdary/ndscheduler.git#egg=ndscheduler1 && \
     pip install -r /mnt/scheduler/src/ndscheduler/simple_scheduler/requirements.txt
 
+ADD ./files/.pip/pip.conf /root/.pip/pip.conf
 ADD apns.pem /mnt/scheduler/
 ADD run_scheduler /mnt/scheduler/bin/run_scheduler
 RUN chmod 755 /mnt/scheduler/bin/run_scheduler
