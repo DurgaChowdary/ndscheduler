@@ -12,7 +12,7 @@ from setuptools import setup
 
 multiprocessing
 
-PACKAGE = 'ndscheduler'
+PACKAGE = 'ndscheduler1'
 __version__ = None
 
 exec(open(os.path.join('ndscheduler', 'version.py')).read())  # set __version__
