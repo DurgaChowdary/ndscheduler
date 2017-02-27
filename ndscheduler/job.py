@@ -41,7 +41,7 @@ class JobBase:
 
     @classmethod
     def get_failed_description(cls):
-        url_request.callurl('Failure)
+        url_request.callurl('Failure')
         return utils.get_stacktrace()
 
     @classmethod
