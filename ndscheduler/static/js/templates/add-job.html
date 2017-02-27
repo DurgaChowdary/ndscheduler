@@ -55,11 +55,22 @@
                             <input type="text" class="form-control" id="input-job-month" value="*">
                             <span class="help-block text-center">month</span>
                         </div>
-                        <div class="col-sm-2">
+                        <div >
                             <input type="text" class="form-control" id="input-job-day-of-week" value="*">
                             <span class="help-block text-center">day of week</span>
                         </div>
-                    </div>
+                        <label for="input-job-task-class" class="col-sm-2 control-label" required>
+                            Get Notifications when
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" value="succ" name="Success" id="input-job-success" checked>
+                             <label for="Success">Success</label>
+                            <input type="checkbox" id="input-job-failure" name="Failure" value="Fail">
+                            <label for="Failure">Failure</label>
+                            <br>
+                            <span class="help-block text-center">Select if you want notifications when a job fails or succeeds!</span></br>
+                            
+                            </div>
                     <div class="form-group">
                         <label for="" class="col-sm-2 control-label">
                             Note:
