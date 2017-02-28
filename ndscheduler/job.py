@@ -47,9 +47,8 @@ class JobBase:
     @classmethod
     def get_succeeded_description(cls):
         hostname = socket.gethostname()
-        task_id = self.job_id
         pid = os.getpid()
-        url_request.callurl( str(task_id) + "  Success")
+        url_request.callurl("  Success")
         return 'hostname: %s | pid: %s' % (hostname, pid)
 
     @classmethod
