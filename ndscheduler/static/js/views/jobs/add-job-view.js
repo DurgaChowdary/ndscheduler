@@ -83,8 +83,6 @@ define(['utils',
         var hour = $('#input-job-hour').val();
         var minute = $('#input-job-minute').val();
         var args = $('#input-job-task-args').val();
-        var success_notification = $('#input_job_success').val();
-        var failure_notification = $("input_job_failure").val();
 
         if (!$.trim(jobName)) {
           utils.alertError('Please fill in job name');
@@ -123,9 +121,7 @@ define(['utils',
           day_of_week: dayOfWeek,
           day: day,
           hour: hour,
-          minute: minute,
-          success_notification = success_notification,
-          failure_notification = failure_notification
+          minute: minute
 
         });
 
