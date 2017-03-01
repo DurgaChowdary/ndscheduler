@@ -40,13 +40,13 @@ class JobBase:
         return 'hostname: %s | pid: %s' % (hostname, pid)
 
     @classmethod
-    def get_failed_description(cls):
+    def get_failed_description(self, cls):
         job_name = utils.get_job_name(self.job_id)
         url_request.callurl(str(job_name) + " Failure")
         return utils.get_stacktrace()
 
     @classmethod
-    def get_succeeded_description(cls):
+    def get_succeeded_description(self, cls):
         hostname = socket.gethostname()
         pid = os.getpid()
         job_name = utils.get_job_name(self.job_id)
