@@ -41,16 +41,16 @@ class JobBase:
 
     @classmethod
     def get_failed_description(cls):
-        job_name = utils.get_job_name(cls.job_id)
-        url_request.callurl(str(job_name) + " Failure")
+        #job_name = utils.get_job_name(cls)
+        
         return utils.get_stacktrace()
 
     @classmethod
     def get_succeeded_description(cls):
         hostname = socket.gethostname()
         pid = os.getpid()
-        job_name = utils.get_job_name(cls.job_id)
-        url_request.callurl(str(job_name) + " Success")
+        #job_name = utils.get_job_name(cls.job_id)
+        
         return 'hostname: %s | pid: %s' % (hostname, pid)
 
     @classmethod
@@ -98,6 +98,7 @@ class JobBase:
         scheduler = scheduler_manager.SchedulerManager.get_instance()
         datastore = scheduler.get_datastore()
         try:
+            
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_RUNNING,
                                        hostname=socket.gethostname(), pid=os.getpid(),
                                        description=cls.get_running_description())
@@ -105,12 +106,14 @@ class JobBase:
             job.run(*args, **kwargs)
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
+            url_request.callurl(str(job_id) + " Success")
         except Exception as e:
             logger.exception(e)
             datastore.update_execution(execution_id,
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
-
+            url_request.callurl(str(job_name) + " Failure")
+            
     def run(self, *args, **kwargs):
         """The "main" function for a job.
 

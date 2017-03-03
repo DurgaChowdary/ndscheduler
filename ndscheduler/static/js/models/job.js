@@ -33,7 +33,7 @@ define(['backbone', 'vendor/moment-timezone-with-data'], function(backbone, mome
     getScheduleString: function() {
       return 'minute: ' + this.get('minute') + ', hour: ' + this.get('hour') +
           ', day: ' + this.get('day') + ', month: ' + this.get('month') +
-          ', day of week: ' + this.get('day_of_week');
+          ', day of week: ' + this.get('day_of_week')+this.get('success_notification')+this.get(failure_notification);
     },
 
     /**
