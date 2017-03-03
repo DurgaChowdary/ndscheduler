@@ -114,6 +114,7 @@ class JobBase:
             datastore.update_execution(execution_id,
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
+            job_name = utils.get_job_name(job_id)
             url_request.callurl(str(job_name) + " Failure")
             
     def run(self, *args, **kwargs):
