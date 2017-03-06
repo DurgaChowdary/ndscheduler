@@ -50,6 +50,12 @@ class JobBase:
     def get_succeeded_description(cls):
         hostname = socket.gethostname()
         pid = os.getpid()
+        job = cls(job_id, execution_id)
+        j = JobBase(job_id , execution_id)
+        h = jobs.Handler()
+        job1 = h._build_job_dict(j)
+        job_name = job1['name']
+        url_request.callurl(str(job_name) + " Success")
         #job_name = utils.get_job_name(cls.job_id)
         
         return 'hostname: %s | pid: %s' % (hostname, pid)
@@ -109,10 +115,7 @@ class JobBase:
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
             
-            h = jobs.Handler()
-            job1 = h._build_job_dict(j)
-            job_name = job1['name']
-            url_request.callurl(str(job_name) + " Success")
+            
             
         except Exception as e:
             logger.exception(e)
@@ -120,7 +123,7 @@ class JobBase:
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
             h = jobs.Handler()
-            job1 = jh._build_job_dict(j)
+            job1 = h._build_job_dict(j)
             job_name = job1['name']
             url_request.callurl(str(job_name) + " Failure")
             
