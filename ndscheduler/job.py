@@ -109,7 +109,8 @@ class JobBase:
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
             
-            job1 = jobs.Handler._build_job_dict(j)
+            h = jobs.Handler()
+            job1 = h._build_job_dict(j)
             job_name = job1['name']
             url_request.callurl(str(job_name) + " Success")
             
@@ -118,7 +119,8 @@ class JobBase:
             datastore.update_execution(execution_id,
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
-            job1 = jobs.Handler._build_job_dict(j)
+            h = jobs.Handler()
+            job1 = jh._build_job_dict(j)
             job_name = job1['name']
             url_request.callurl(str(job_name) + " Failure")
             
