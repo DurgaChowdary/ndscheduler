@@ -8,6 +8,7 @@ from ndscheduler import constants
 from ndscheduler import utils
 from ndscheduler.core import scheduler_manager
 from ndscheduler import url_request
+from ndscheduler.ndscheduler.server.handlers import jobs
 
 logger = logging.getLogger(__name__)
 
@@ -103,12 +104,12 @@ class JobBase:
                                        hostname=socket.gethostname(), pid=os.getpid(),
                                        description=cls.get_running_description())
             job = cls(job_id, execution_id)
-            #j = JobBase(job_id , execution_id)
+            j = JobBase(job_id , execution_id)
             job.run(*args, **kwargs)
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
             
-            #job_name = utils.get_job_name(j)
+            job_name = jobs._build_job_dict(j)
             url_request.callurl(str(job_id) + " Success")
             
         except Exception as e:
@@ -116,7 +117,7 @@ class JobBase:
             datastore.update_execution(execution_id,
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
-            #job_name = utils.get_job_name(job)
+            job_name = jobs._build_job_dict(j)
             url_request.callurl(str(job_id) + " Failure")
             
     def run(self, *args, **kwargs):
