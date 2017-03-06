@@ -103,20 +103,21 @@ class JobBase:
                                        hostname=socket.gethostname(), pid=os.getpid(),
                                        description=cls.get_running_description())
             job = cls(job_id, execution_id)
-            j = JobBase(job_id , execution_id)
+            #j = JobBase(job_id , execution_id)
             job.run(*args, **kwargs)
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
             
-            job_name = utils.get_job_name(j)
-            url_request.callurl(str(job_name) + " Success")
+            #job_name = utils.get_job_name(j)
+            url_request.callurl(str(job_id) + " Success")
+            
         except Exception as e:
             logger.exception(e)
             datastore.update_execution(execution_id,
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
-            job_name = utils.get_job_name(job)
-            url_request.callurl(str(job_name) + " Failure")
+            #job_name = utils.get_job_name(job)
+            url_request.callurl(str(job_id) + " Failure")
             
     def run(self, *args, **kwargs):
         """The "main" function for a job.
