@@ -109,16 +109,18 @@ class JobBase:
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
             
-            job_name = jobs.h._build_job_dict(j)
-            url_request.callurl(str(job_id) + " Success")
+            job1 = jobs.Handler._build_job_dict(j)
+            job_name = job1['name']
+            url_request.callurl(str(job_name) + " Success")
             
         except Exception as e:
             logger.exception(e)
             datastore.update_execution(execution_id,
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
-            job_name = jobs.Handler_build_job_dict(j)
-            url_request.callurl(str(job_id) + " Failure")
+            job1 = jobs.Handler._build_job_dict(j)
+            job_name = job1['name']
+            url_request.callurl(str(job_name) + " Failure")
             
     def run(self, *args, **kwargs):
         """The "main" function for a job.
