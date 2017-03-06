@@ -103,12 +103,12 @@ class JobBase:
                                        hostname=socket.gethostname(), pid=os.getpid(),
                                        description=cls.get_running_description())
             job = cls(job_id, execution_id)
-            
+            j = JobBase(job_id , execution_id)
             job.run(*args, **kwargs)
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
             
-            job_name = utils.get_job_name(job)
+            job_name = utils.get_job_name(j)
             url_request.callurl(str(job_name) + " Success")
         except Exception as e:
             logger.exception(e)
