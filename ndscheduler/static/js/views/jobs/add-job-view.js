@@ -87,7 +87,8 @@ define(['utils',
         var failure_notification = $('#input-job-failure').val()
 
         if (!$.trim(jobName)) {
-          utils.alertError('Please fill in job name');
+          utils.alertError('Please fill in job name'+success_notification);
+
           return;
         }
 
