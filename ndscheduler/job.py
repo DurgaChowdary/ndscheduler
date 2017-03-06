@@ -109,7 +109,7 @@ class JobBase:
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
                                        description=cls.get_succeeded_description())
             
-            job_name = jobs._build_job_dict(j)
+            job_name = jobs.h._build_job_dict(j)
             url_request.callurl(str(job_id) + " Success")
             
         except Exception as e:
@@ -117,7 +117,7 @@ class JobBase:
             datastore.update_execution(execution_id,
                                        state=constants.EXECUTION_STATUS_FAILED,
                                        description=cls.get_failed_description())
-            job_name = jobs._build_job_dict(j)
+            job_name = jobs.Handler_build_job_dict(j)
             url_request.callurl(str(job_id) + " Failure")
             
     def run(self, *args, **kwargs):
