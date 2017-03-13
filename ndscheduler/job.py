@@ -9,6 +9,7 @@ from ndscheduler import utils
 from ndscheduler.core import scheduler_manager
 from ndscheduler import url_request
 from ndscheduler.server.handlers import jobs
+from ndscheduler.core.scheduler import base
 
 logger = logging.getLogger(__name__)
 
@@ -112,8 +113,9 @@ class JobBase:
             """h = jobs.Handler()
             job1 = h._build_job_dict(j)
             job_name = job1['name']"""
-            jo = utils.get_cron_strings(j)
-            url_request.callurl(str(jo['month']) + " Success")
+            
+            #jo = utils.get_cron_strings(j)
+            url_request.callurl(str(job_id) + " Success")
             
         except Exception as e:
             logger.exception(e)
@@ -123,8 +125,8 @@ class JobBase:
             """h = jobs.Handler()
             job1 = h._build_job_dict(j)
             job_name = job1['name']"""
-            jo = utils.get_cron_strings(j)
-            url_request.callurl(str(jo['month']) + " Failure")
+            #jo = utils.get_cron_strings(j)
+            url_request.callurl(str(job_id) + " Failure")
             
     def run(self, *args, **kwargs):
         """The "main" function for a job.
