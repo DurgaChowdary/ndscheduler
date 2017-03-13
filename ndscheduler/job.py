@@ -9,7 +9,7 @@ from ndscheduler import utils
 from ndscheduler.core import scheduler_manager
 from ndscheduler import url_request
 from ndscheduler.server.handlers import jobs
-from ndscheduler.core.scheduler import base
+
 
 logger = logging.getLogger(__name__)
 
