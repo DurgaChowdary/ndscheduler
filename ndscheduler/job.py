@@ -43,7 +43,6 @@ class JobBase:
 
     @classmethod
     def get_failed_description(cls):
-        #job_name = utils.get_job_name(cls)
         
         return utils.get_stacktrace()
 
@@ -51,7 +50,6 @@ class JobBase:
     def get_succeeded_description(cls):
         hostname = socket.gethostname()
         pid = os.getpid()
-        #job_name = utils.get_job_name(cls.job_id)
         
         return 'hostname: %s | pid: %s' % (hostname, pid)
 
