@@ -27,6 +27,7 @@ class JobBase:
 
     @classmethod
     def get_scheduled_description(cls):
+        # Returns string containing the hostname of the machine where the Python interpreter is currently exevuting
         hostname = socket.gethostname()
         pid = os.getpid()
         return 'hostname: %s | pid: %s' % (hostname, pid)

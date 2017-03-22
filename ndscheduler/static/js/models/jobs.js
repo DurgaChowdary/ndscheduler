@@ -141,7 +141,7 @@ define(['utils',
 
     _addJobSuccess: function() {
       utils.alertSuccess('Success! Job is added.');
-      utils.alertSuccess('addJob["name"]');
+      utils.alertSuccess(data["name"]);
       jobsCollection.trigger('reset');
     },
 

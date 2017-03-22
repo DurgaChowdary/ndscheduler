@@ -34,7 +34,9 @@ class SingletonScheduler (apscheduler_tornado.TornadoScheduler):
 
     @classmethod
     def run_job(cls, job_class_path, job_id, *args, **kwargs):
+        # An execution ID is created
         execution_id = utils.generate_uuid()
+        
         datastore = utils.get_datastore_instance()
         datastore.add_execution(execution_id, job_id,
                                 constants.EXECUTION_STATUS_SCHEDULED,
