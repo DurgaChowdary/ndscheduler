@@ -134,13 +134,13 @@ define(['utils',
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
-        success: this._addJobSuccess,
+        success: this._addJobSuccess(data),
         error: this._addJobError
       });
     },
 
-    _addJobSuccess: function() {
-      //utils.alertSuccess('Success! Job is added.');
+    _addJobSuccess: function(data) {
+      utils.alertSuccess('Success! Job is added.');
       utils.alertSuccess(data["success_notification"]);
       jobsCollection.trigger('reset');
     },
