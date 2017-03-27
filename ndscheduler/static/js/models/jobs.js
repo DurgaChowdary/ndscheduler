@@ -7,6 +7,7 @@
 
 require.config({
   paths: {
+    
     'jquery': 'vendor/jquery',
     'underscore': 'vendor/underscore',
     'backbone': 'vendor/backbone',
@@ -50,7 +51,7 @@ define(['utils',
      * @return {number} total number of active jobs.
      */
     getActiveCount: function() {
-      return _.filter(this.jobs, function(job) {
+      return _.filter(this.jobs, function(job) { 
         return job.get('next_run_time') !== '';
       }).length;
     },
@@ -128,6 +129,7 @@ define(['utils',
     /**
      * Add a job.
      */
+     // data has all the values that job collection sends
     addJob: function(data) {
       $.ajax({
         url: config.jobs_url,
@@ -141,7 +143,7 @@ define(['utils',
 
     _addJobSuccess: function(data) {
       utils.alertSuccess('Success! Job is added.');
-      utils.alertSuccess(data["success_notification"]);
+      utils.alertSuccess(data["success_notification"]+data["name"]);
       jobsCollection.trigger('reset');
     },
 
