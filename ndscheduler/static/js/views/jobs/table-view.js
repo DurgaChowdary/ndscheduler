@@ -129,7 +129,9 @@ define(['utils',
             'job_hour': _.escape(jobObj.hour),
             'job_minute': _.escape(jobObj.minute),
             'job_active': job.getActiveString(),
-            'job_pubargs': _.escape(job.getPubArgsString())
+            'job_pubargs': _.escape(job.getPubArgsString()),
+            'job_success_notification': _.escape(jobObj.success_notification),
+            'job_failure_notification': _.escape(jobObj.failure_notification)
           }),
           job.getScheduleString(),
           job.getNextRunTimeHTMLString(),
