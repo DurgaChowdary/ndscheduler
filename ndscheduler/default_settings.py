@@ -46,10 +46,11 @@ JOB_MISFIRE_GRACE_SEC = 3600
 #
 # Database settings
 #
+
 JOBS_TABLENAME = 'scheduler_jobs'
 EXECUTIONS_TABLENAME = 'scheduler_execution'
 AUDIT_LOGS_TABLENAME = 'scheduler_jobauditlog'
-
+NOTIFICATIONS_TABLENAME = 'scheduler_notifications'
 # See different database providers in ndscheduler/core/datastore/providers/
 
 # SQLite

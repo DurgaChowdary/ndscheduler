@@ -46,8 +46,8 @@ AUDIT_LOGS = sqlalchemy.Table(
 
 # Notifications
 
-#NOTIFICATIONS = sqlalchemy.Table(
- #   settings.NOTIFICATIONS_TABLENAME, METADATA,
-  #  sqlalchemy.Column('job_id', sqlalchemy.Text, nullable=False),
-   # sqlalchemy.Column('success_notification', sqlalchemy.Text, nullable=True),
-    #sqlalchemy.Column('failure_notification', sqlalchemy.Text, nullable=True))
+NOTIFICATIONS = sqlalchemy.Table(
+    settings.NOTIFICATIONS_TABLENAME, METADATA,
+    sqlalchemy.Column('job_id', sqlalchemy.Text, nullable=False),
+    sqlalchemy.Column('success_notification', sqlalchemy.Text, nullable=True),
+    sqlalchemy.Column('failure_notification', sqlalchemy.Text, nullable=True))
