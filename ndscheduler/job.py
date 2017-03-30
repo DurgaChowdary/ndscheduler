@@ -114,8 +114,8 @@ class JobBase:
             job_name = job1['name']"""
             
             #jo = utils.get_cron_strings(j)
-            url_request.job_name(str(job_id))
-            url_request.callurl(str(job_id) + " Success")
+            job_name = url_request.jobname(str(job_id))
+            url_request.callurl("Job ID : " + str(job_id)+"Job Name : "+ str(job_name)+ " : Success")
             
             
         except Exception as e:
@@ -127,7 +127,8 @@ class JobBase:
             job1 = h._build_job_dict(j)
             job_name = job1['name']"""
             #jo = utils.get_cron_strings(j)
-            url_request.callurl(str(job_id) + " Failure")
+            job_name = url_request.jobname(str(job_id))
+            url_request.callurl("Job ID : " + str(job_id)+"Job Name : "+ str(job_name)+ " : Failure")
             
     def run(self, *args, **kwargs):
         """The "main" function for a job.
