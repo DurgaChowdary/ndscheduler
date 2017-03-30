@@ -27,8 +27,8 @@ EXECUTIONS = sqlalchemy.Table(
                       default=utils.get_current_datetime, onupdate=utils.get_current_datetime),
     sqlalchemy.Column('description', sqlalchemy.Text, nullable=True),
     sqlalchemy.Column('job_id', sqlalchemy.Text, nullable=False),
-    sqlalchemy.Column('task_id', sqlalchemy.Text, nullable=True),
-    #sqlalchemy.Column('notification', sqlalchemy.Text, nullable = True))
+    sqlalchemy.Column('task_id', sqlalchemy.Text, nullable=True))
+    #sqlalchemy.Column('notification', sqlalchemy.Text, nullable = True)
 
 #
 # Audit logs
@@ -41,5 +41,13 @@ AUDIT_LOGS = sqlalchemy.Table(
     sqlalchemy.Column('user', sqlalchemy.Text, nullable=True),
     sqlalchemy.Column('created_time', sqlalchemy.DateTime(timezone=True), nullable=False,
                       default=utils.get_current_datetime),
-    sqlalchemy.Column('description', sqlalchemy.Text, nullable=True),
+    sqlalchemy.Column('description', sqlalchemy.Text, nullable=True))
     #sqlalchemy.Column('notification', sqlalchemy.Text, nullable = True))
+
+# Notifications
+
+#NOTIFICATIONS = sqlalchemy.Table(
+ #   settings.NOTIFICATIONS_TABLENAME, METADATA,
+  #  sqlalchemy.Column('job_id', sqlalchemy.Text, nullable=False),
+   # sqlalchemy.Column('success_notification', sqlalchemy.Text, nullable=True),
+    #sqlalchemy.Column('failure_notification', sqlalchemy.Text, nullable=True))
