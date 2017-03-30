@@ -28,7 +28,7 @@ EXECUTIONS = sqlalchemy.Table(
     sqlalchemy.Column('description', sqlalchemy.Text, nullable=True),
     sqlalchemy.Column('job_id', sqlalchemy.Text, nullable=False),
     sqlalchemy.Column('task_id', sqlalchemy.Text, nullable=True),
-    sqlalchemy.Column('notification', sqlalchemy.Text, nullable = True))
+    #sqlalchemy.Column('notification', sqlalchemy.Text, nullable = True))
 
 #
 # Audit logs
@@ -42,4 +42,4 @@ AUDIT_LOGS = sqlalchemy.Table(
     sqlalchemy.Column('created_time', sqlalchemy.DateTime(timezone=True), nullable=False,
                       default=utils.get_current_datetime),
     sqlalchemy.Column('description', sqlalchemy.Text, nullable=True),
-    sqlalchemy.Column('notification', sqlalchemy.Text, nullable = True))
+    #sqlalchemy.Column('notification', sqlalchemy.Text, nullable = True))

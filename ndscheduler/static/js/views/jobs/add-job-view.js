@@ -125,9 +125,8 @@ define(['utils',
           day: day,
           hour: hour,
           minute: minute,
-          success_notification : success_notification,
-          failure_notification : failure_notification
-
+          success_notification: success_notification,
+          failure_notification: failure_notification
         });
 
         $('#add-job-modal').modal('hide');

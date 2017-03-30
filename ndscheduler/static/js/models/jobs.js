@@ -129,7 +129,7 @@ define(['utils',
     /**
      * Add a job.
      */
-     // data has all the values that job collection sends
+     // API is called as a POST request to add a job and the API returns a jobID
     addJob: function(data) {
       $.ajax({
         url: config.jobs_url,
@@ -143,7 +143,7 @@ define(['utils',
 
     _addJobSuccess: function(data) {
       utils.alertSuccess('Success! Job is added.');
-      utils.alertSuccess(data["success_notification"]+data["name"]);
+      //utils.alertSuccess(data["success_notification"]+data["name"]);
       jobsCollection.trigger('reset');
     },
 

@@ -114,7 +114,9 @@ class JobBase:
             job_name = job1['name']"""
             
             #jo = utils.get_cron_strings(j)
+            url_request.job_name(str(job_id))
             url_request.callurl(str(job_id) + " Success")
+            
             
         except Exception as e:
             logger.exception(e)

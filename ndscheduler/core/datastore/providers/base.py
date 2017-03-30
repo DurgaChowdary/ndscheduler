@@ -49,7 +49,8 @@ class DatastoreBase(sched_sqlalchemy.SQLAlchemyJobStore):
         execution = {
             'eid': execution_id,
             'job_id': job_id,
-            'state': state
+            'state': state,
+            'notification' : notification
         }
         execution.update(kwargs)
         execution_insert = tables.EXECUTIONS.insert().values(**execution)
@@ -94,6 +95,7 @@ class DatastoreBase(sched_sqlalchemy.SQLAlchemyJobStore):
             'pid': row.pid,
             'task_id': row.task_id,
             'description': row.description,
+            'notification' : row.notification,
             'scheduled_time': self.get_time_isoformat_from_db(row.scheduled_time),
             'updated_time': self.get_time_isoformat_from_db(row.updated_time)}
         job = self.lookup_job(row.job_id)
@@ -102,6 +104,8 @@ class DatastoreBase(sched_sqlalchemy.SQLAlchemyJobStore):
                 'job_id': job.id,
                 'name': job.name,
                 'task_name': utils.get_job_name(job),
+                'success_notification' : job.success_notification,
+                'failure_notification' : job.failure_notification,
                 'pub_args': utils.get_job_args(job)}
             return_json['job'].update(utils.get_cron_strings(job))
         return return_json

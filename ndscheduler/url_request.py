@@ -1,5 +1,16 @@
 import urllib
 import requests
+import http.client
+
+
+#Job Name
+def jobname(job_id):
+
+    r = requests.get('http://vm-ioed-um-svl4:8888/api/v1/jobs/'+job_id)
+    data = r.json()
+    job_name = data["name"]
+    return job_name
+
 
 # Call the URL
 def callurl(message_text):
